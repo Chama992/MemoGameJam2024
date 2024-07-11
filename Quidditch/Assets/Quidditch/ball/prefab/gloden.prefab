@@ -132,6 +132,8 @@ MonoBehaviour:
   scoreOfGolden: 3
   livingTime: 10
   checkTime: 0.5
+  audioClip: {fileID: 8300000, guid: cd84a238bb47fba428cd3edcea5c348b, type: 3}
+  audioSource: {fileID: 0}
 --- !u!70 &3346853261336299300
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

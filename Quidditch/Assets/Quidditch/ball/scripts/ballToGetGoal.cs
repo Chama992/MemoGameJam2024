@@ -7,11 +7,16 @@ public class ballToGetGoal : MonoBehaviour
 {
     private Rigidbody2D _Rigid;
     private Vector2 startPosition = new Vector2(0, -4);
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         _Rigid = GetComponent<Rigidbody2D>();
         setballInitial();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.Stop();
     }
 
     // Update is called once per frame
@@ -27,6 +32,7 @@ public class ballToGetGoal : MonoBehaviour
             GameObject play1 = GameObject.FindGameObjectWithTag("Player1");
             Player playerComponent = play1.GetComponent<Player>();
             playerComponent.ballscore += 1;
+            audioSource.PlayOneShot(audioClip);
             setball();
         }
         else if (collisionGo.CompareTag("player2score"))
@@ -34,6 +40,7 @@ public class ballToGetGoal : MonoBehaviour
             GameObject Play2 = GameObject.FindGameObjectWithTag("Player2");
             Player playerComponent = Play2.GetComponent<Player>();
             playerComponent.ballscore += 1;
+            audioSource.PlayOneShot(audioClip);
             setball();
         }
         else

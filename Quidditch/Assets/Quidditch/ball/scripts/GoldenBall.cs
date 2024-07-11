@@ -17,6 +17,8 @@ public class GoldenBall : MonoBehaviour
     private GameObject player2;
     private GameObject goldenGenerator;
     private Rigidbody2D _Rigid;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,9 @@ public class GoldenBall : MonoBehaviour
         player2 = GameObject.FindGameObjectWithTag("Player2");
         goldenGenerator = GameObject.FindGameObjectWithTag("goldengenerator");
         _Rigid = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.Stop();
     }
     void Update()
     {
@@ -66,6 +71,7 @@ public class GoldenBall : MonoBehaviour
         {
             collisionGO.GetComponent<Player>().goldenthievesscore += scoreOfGolden;
             goldenGenerator.GetComponent<GolenBallGenerator>().generatedObjects.Remove(gameObject);
+            audioSource.PlayOneShot(audioClip);
             Destroy(gameObject);
         }
     }
