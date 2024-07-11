@@ -6,6 +6,7 @@ public class buff1 : MonoBehaviour
 {
     public SpriteRenderer sr;//组件
     public Sprite[] pic;//图片
+    public string broomName;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,8 @@ public class buff1 : MonoBehaviour
         // 抽取一个随机坐骑
         Broom selectedBroom = Broom.ExtractBroom();
         Debug.Log($"玩家1抽取到坐骑：{selectedBroom.broomName}");
-        if(selectedBroom.broomName=="普通扫帚")
+        broomName = selectedBroom.broomName;
+        if (selectedBroom.broomName=="普通扫帚")
         {
             sr.sprite= pic[0];
         }

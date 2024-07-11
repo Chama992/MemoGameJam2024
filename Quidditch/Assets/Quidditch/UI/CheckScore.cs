@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class CheckScore : MonoBehaviour
 {
@@ -17,17 +20,25 @@ public class CheckScore : MonoBehaviour
     public float gamingTimeNow = 0;
     private Player player1Component;
     private Player player2Component;
+    public Text player1Text;
+    public Text player2Text;
+    public Text countTime;
+    public Text countScore;
+    private float TextLivingTime;
+    private GameObject play1;
+    private GameObject play2;
     // Start is called before the first frame update
     void Start()
     {
-        GameObject play1 = GameObject.FindGameObjectWithTag("Player1");
-        GameObject Play2 = GameObject.FindGameObjectWithTag("Player2");
+        play1 = GameObject.FindGameObjectWithTag("Player1");
+        play2 = GameObject.FindGameObjectWithTag("Player2");
         player1Component = play1.GetComponent<Player>();
-        player2Component = Play2.GetComponent<Player>();
+        player2Component = play2.GetComponent<Player>();
     }
     // Update is called once per frame
     void Update()
     {
+        TextLivingTime += Time.deltaTime; 
         gamingTimeNow += Time.deltaTime;
         player1BallScore = player1Component.ballscore;
         player2BallScore = player2Component.ballscore;
@@ -35,27 +46,39 @@ public class CheckScore : MonoBehaviour
         player2GoldenBallScore = player2Component.goldenthievesscore;
         player1totalscore = player1Component.score;
         player2totalscore = player2Component.score;
-        if (player1totalscore >= 10)
+        countTime.text = $"计时：{gamingTimeNow}s";
+        countScore.text = $"得分：{player1totalscore}:{player2totalscore}";
+        if (TextLivingTime > 1.5)
         {
-            //游戏结束场景 跳转玩家一胜利
+            player1Text.text = $"您抽取到的扫帚是：{play1.GetComponent<buff1>().broomName}";
+            player2Text.text = $"您抽取到的扫帚是：{play2.GetComponent<b2>().broomName}";
         }
-        else if(player2totalscore >= 10)
+        else if ( TextLivingTime >3)
         {
-            //游戏结束场景 跳转玩家二胜利
+            Destroy(player1Text);
+            Destroy(player2Text);
         }
+        //if (player1totalscore >= 10)
+        //{
+        //    //游戏结束场景 跳转玩家一胜利
+        //}
+        //else if(player2totalscore >= 10)
+        //{
+        //    //游戏结束场景 跳转玩家二胜利
+        //}
         if (gamingTimeNow >= gamingTime)
         {
             if (player1totalscore > player2totalscore)
             {
-                //游戏场景结束 跳转玩家一胜利
+                SceneManager.LoadScene("win"); //游戏场景结束 跳转玩家一胜利
             }
             else if (player1totalscore < player2totalscore)
             {
-                //游戏结束场景 跳转玩家二胜利
+                SceneManager.LoadScene("win2"); //游戏结束场景 跳转玩家二胜利
             }
             else if (player1totalscore == player2totalscore)
             {
-                //游戏场景结束 跳转玩家一胜利
+                SceneManager.LoadScene("draw");//游戏场景结束 跳转平局
             }
         }
     }
