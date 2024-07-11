@@ -25,6 +25,9 @@ public class WalkBall : MonoBehaviour
         player1 = GameObject.FindGameObjectWithTag("Player1");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         _Rigid = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.Stop();
     }
     void Update()
     {

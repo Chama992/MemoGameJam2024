@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7754041663911334347}
   - component: {fileID: 9058830432376289437}
   - component: {fileID: 7383770888189916237}
-  - component: {fileID: -5255692844208594151}
+  - component: {fileID: -5713595324574720484}
   m_Layer: 0
   m_Name: WalkBall
   m_TagString: walkball
@@ -54,6 +54,8 @@ MonoBehaviour:
   generateLength: 8
   generateWidth: 4
   force: 3000
+  audioClip: {fileID: 8300000, guid: b4eb6358a754d04418f9a6cb85b1590d, type: 3}
+  audioSource: {fileID: 0}
 --- !u!212 &7754041663911334347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +170,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!82 &-5255692844208594151
+--- !u!82 &-5713595324574720484
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +180,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b4eb6358a754d04418f9a6cb85b1590d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
