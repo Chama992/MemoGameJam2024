@@ -8,7 +8,7 @@ public class ObjectGenerator : MonoBehaviour
 {
     public float generateLength;
     public float generateWidth;
-    public int objectCount;
+    private int objectCount;
     public float generatePropTime;
     private Player player1Component;
     private Player player2Component;
@@ -44,6 +44,7 @@ public class ObjectGenerator : MonoBehaviour
         }
         if (timeOfNoScore > generatePropTime && generatedObjects.Count == 0)
         {
+            objectCount = Random.Range(2,4);
             Debug.Log($"开始生成");
             for (int i = 0; i < objectCount; i++)
             {

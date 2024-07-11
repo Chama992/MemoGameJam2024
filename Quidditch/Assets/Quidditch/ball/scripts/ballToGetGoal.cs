@@ -11,7 +11,7 @@ public class ballToGetGoal : MonoBehaviour
     void Start()
     {
         _Rigid = GetComponent<Rigidbody2D>();
-        setball();
+        setballInitial();
     }
 
     // Update is called once per frame
@@ -44,5 +44,9 @@ public class ballToGetGoal : MonoBehaviour
     {
         transform.position = startPosition;
         _Rigid.velocity = new Vector2(0, 5);
+    }
+    void setballInitial()
+    {
+        transform.position = Vector2.zero;
     }
 }

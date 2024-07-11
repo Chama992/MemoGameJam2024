@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f79796728b857489898520b64973eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generalizedTime: 20
+  generalizedTime: 90
   generalizedDeltaTime: 20
   generateLength: 7
   generateWidth: 4
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   generateLength: 5
   generateWidth: 4
   objectCount: 3
-  generatePropTime: 5
+  generatePropTime: 30
   skills:
   - {fileID: 6495780015635993949, guid: caafd343fbc40e643bc402454a0f1f53, type: 3}
   - {fileID: 4878003312642858027, guid: c4a137c47cc232a4585630d82d98fe86, type: 3}

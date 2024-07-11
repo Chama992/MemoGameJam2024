@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
                 profFlag = true;
                 break;
             case "shield":
-                skill = new Shield("shield", 10);
+                skill = new Shield("shield", 5);
                 skillName = "shield";
                 profFlag = true;
                 break;
@@ -244,7 +244,7 @@ public class Player : MonoBehaviour
                 Bullet bullet = bulletObj.GetComponent<Bullet>();
                 if (x == 0 && y == 0)
                 {
-                    Vector2 bullectDirection;
+                    Vector3 bullectDirection;
                     if (isRight)
                     {
                         if (playerid == 1)
@@ -268,6 +268,7 @@ public class Player : MonoBehaviour
                         }
                     }
                     bullet.BasicSet(bullectDirection, playerid);
+                    bulletObj.transform.position = transform.position + bullectDirection;
                 }
                 else
                 {
