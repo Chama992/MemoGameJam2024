@@ -16,6 +16,8 @@ public class WalkBall : MonoBehaviour
     private bool isMoveing = false;
     private Rigidbody2D _Rigid;
     private Vector2 lastDir;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +85,7 @@ public class WalkBall : MonoBehaviour
     void Attack(GameObject player)
     {
         _Rigid.velocity = (player.transform.position - transform.position).normalized * PursuitSpeed;
+        audioSource.PlayOneShot(audioClip);
         isMoveing = true;
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -33,12 +33,17 @@ public class Player : MonoBehaviour
     private Vector2 lastDir;
     private GameObject shieldCreated;
     private GameObject shockCreated;
+    public AudioClip[] audioclip;
+    public AudioSource audioSource;
     void Start()
     {
         _Sr = GetComponent<SpriteRenderer>();
         _Rigid = GetComponent<Rigidbody2D>();
         currentspeed = 0.0f;
-     
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.Stop();
+
     }
     // Update is called once per frame
     void Update()
@@ -136,6 +141,7 @@ public class Player : MonoBehaviour
                 if (!(lastDir == Vector2.zero))
                 {
                     _Rigid.AddForce(-lastDir * force, ForceMode2D.Force);
+                    audioSource.PlayOneShot(audioclip[4]);
                 }
                 else
                 {
@@ -148,6 +154,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GetSkill(collision.gameObject);
+        audioSource.PlayOneShot(audioclip[0]);
     }
     void GetSkill(GameObject prof) 
     {
@@ -191,6 +198,7 @@ public class Player : MonoBehaviour
             if (skill != null && Input.GetKeyUp(KeyCode.Space))
             {
                 UseSkil(x, y, playerid);
+                
             }
         }
         else
@@ -209,6 +217,9 @@ public class Player : MonoBehaviour
             case "cloaking":
                 if (!((Cloaking)skill).isUsed)
                 {
+                    audioSource.loop = true;
+                    audioSource.clip = audioclip[1];
+                    audioSource.Play();
                     _Sr.color = new Color(_Sr.color.r, _Sr.color.g, _Sr.color.b, _Sr.color.a * 0.5f);
                     ((Cloaking)skill).isUsed = true;
                     isCloaking = true;
@@ -217,6 +228,9 @@ public class Player : MonoBehaviour
             case "shield":
                 if (!((Shield)skill).isUsed)
                 {
+                    audioSource.loop = true;
+                    audioSource.clip= audioclip[2];
+                    audioSource.Play();
                     shieldCreated = Instantiate(shield);
                     shieldCreated.transform.parent = transform;
                     ((Shield)skill).isUsed = true;
@@ -246,6 +260,7 @@ public class Player : MonoBehaviour
                     bullet.BasicSet((new Vector3(x, y)).normalized, playerid);
                 }
                 ((Attack)skill).times -= 1;
+                audioSource.PlayOneShot(audioclip[3]);
                 break;
         }
 
@@ -260,6 +275,9 @@ public class Player : MonoBehaviour
                     ((Cloaking)skill).duration -= Time.deltaTime;
                 else
                 {
+                    audioSource.loop = false;
+                    audioSource.clip = audioclip[1];
+                    audioSource.Stop();
                     skill = null;
                     skillName = null;
                     _Sr.color = new Color(_Sr.color.r, _Sr.color.g, _Sr.color.b, _Sr.color.a * 2);
@@ -272,6 +290,9 @@ public class Player : MonoBehaviour
                     ((Shield)skill).duration -= Time.deltaTime;
                 else
                 {
+                    audioSource.loop = false;
+                    audioSource.clip = audioclip[2];
+                    audioSource.Stop();
                     Destroy(shieldCreated);
                     skill = null;
                     skillName = null;

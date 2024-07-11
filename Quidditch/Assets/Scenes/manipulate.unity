@@ -642,9 +642,13 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8751342334655772264, guid: 5a7df8f81ee794e48b4bdd51760b0afd, type: 3}
   playerid: 1
   force: 3000
+  shield: {fileID: 0}
+  shock: {fileID: 0}
   score: 0
   ballscore: 0
   goldenthievesscore: 0
+  isCloaking: 0
+  isShielding: 0
   isshocking: 0
 --- !u!114 &475607526
 MonoBehaviour:
@@ -2176,6 +2180,134 @@ Transform:
   m_Children: []
   m_Father: {fileID: 84385273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &930461431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930461433}
+  - component: {fileID: 930461432}
+  m_Layer: 0
+  m_Name: startbgm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &930461432
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930461431}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &930461433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930461431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5372672, y: -0.45610547, z: -4.45982}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933179432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,10 +2658,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f79796728b857489898520b64973eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generalizedTime: 180
+  generalizedDeltaTime: 20
   generateLength: 0
   generateWidth: 0
   objectCount: 0
-  walkBall: {fileID: 4836995139046992764, guid: 92a62ee35cd998f4f99813f70a753306, type: 3}
+  glodenkBall: {fileID: 0}
   generatedObjects: []
 --- !u!1 &1093973540
 GameObject:
@@ -2881,8 +3015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4197fea74ff52e4fb8e5f10ae4ed6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateLength: 9
-  generateWidth: 5
+  generateSize1: []
+  generateSize2: []
   objectCount: 2
   walkBall: {fileID: 4836995139046992764, guid: a4f65cded8c7845439eed632b2197474, type: 3}
   generatedObjects: []
@@ -3091,6 +3225,7 @@ MonoBehaviour:
   generateLength: 5
   generateWidth: 4
   objectCount: 3
+  generatePropTime: 0
   skills:
   - {fileID: 6495780015635993949, guid: caafd343fbc40e643bc402454a0f1f53, type: 3}
   - {fileID: 4878003312642858027, guid: c4a137c47cc232a4585630d82d98fe86, type: 3}
@@ -4445,9 +4580,13 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8751342334655772264, guid: 5a7df8f81ee794e48b4bdd51760b0afd, type: 3}
   playerid: 2
   force: 3000
+  shield: {fileID: 0}
+  shock: {fileID: 0}
   score: 0
   ballscore: 0
   goldenthievesscore: 0
+  isCloaking: 0
+  isShielding: 0
   isshocking: 0
 --- !u!50 &2136956343
 Rigidbody2D:
@@ -4614,3 +4753,4 @@ SceneRoots:
   - {fileID: 1590127211}
   - {fileID: 860818559}
   - {fileID: 1767970469}
+  - {fileID: 930461433}
