@@ -6,20 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IN/begin.unity
-    guid: c2a4b7a5354f1284493aecdde8baac42
-  - enabled: 1
-    path: Assets/Scenes/OUT/Lottery page.unity
-    guid: f35805159df56624dbc4cff3875aa58e
-  - enabled: 0
-    path: Assets/Scenes/ball.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/OUT/Main.unity
     guid: 7ac82e3ec36afc642b5f92e2ee699e3e
   - enabled: 1
-    path: Assets/Scenes/OUT/draw.unity
-    guid: 6875113f8e2c6634fa3f80d5f26fc8f7
+    path: Assets/Scenes/OUT/win.unity
+    guid: 0f245601f960e694f9f59676b7485447
   - enabled: 1
     path: Assets/Scenes/OUT/game_rule1.unity
     guid: b012883b95d647c4c82519b70b5c8231
@@ -35,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OUT/game_rule5.unity
     guid: 053e32d6c4d4161459bc6b50abb81acf
+  - enabled: 1
+    path: Assets/Scenes/OUT/draw.unity
+    guid: 6875113f8e2c6634fa3f80d5f26fc8f7
+  - enabled: 1
+    path: Assets/Scenes/IN/begin.unity
+    guid: c2a4b7a5354f1284493aecdde8baac42
   m_configObjects: {}

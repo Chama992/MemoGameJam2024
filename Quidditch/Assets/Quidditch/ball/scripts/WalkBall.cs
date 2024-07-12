@@ -97,12 +97,13 @@ public class WalkBall : MonoBehaviour
         GameObject collisionGO = collision.gameObject;
         if (collisionGO.CompareTag("Player1") || collisionGO.CompareTag("Player2"))
         {
-            collisionGO.GetComponent<Rigidbody2D>().AddForce(lastDir * force, ForceMode2D.Force);
             Player player = collisionGO.GetComponent<Player>();
             if (!player.isShielding)
             {
+                collisionGO.GetComponent<Rigidbody2D>().AddForce(lastDir * force, ForceMode2D.Force);
                 player.isshocking = true;
             }
+            _Rigid.velocity = -lastDir.normalized * PursuitSpeed;
         }
     }
 }

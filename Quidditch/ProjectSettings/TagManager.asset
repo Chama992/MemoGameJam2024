@@ -3,22 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Obstacles
-  - ball
-  - propgenerator
-  - attack
-  - shield
-  - cloaking
-  - goal
-  - player1score
-  - player2score
-  - Player1
-  - Player2
-  - walkballgenerator
-  - goldengenerator
-  - walkball
-  - goldenball
+  tags: []
   layers:
   - Default
   - TransparentFX

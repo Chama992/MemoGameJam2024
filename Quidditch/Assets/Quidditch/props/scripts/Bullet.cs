@@ -45,6 +45,7 @@ public class Bullet : MonoBehaviour
                 Debug.Log($"当前的tag为{tag}当前的id为{id}");
                 if (!collision.gameObject.GetComponent<Player>().isShielding)
                 {
+                    collision.gameObject.GetComponent<Player>().isshocking = true;
                     rigidbody2D.AddForce(lastDir * force, ForceMode2D.Force);
                     Debug.Log($"子弹{gameObject.name}成功击中{collision.gameObject.name}");
                 }

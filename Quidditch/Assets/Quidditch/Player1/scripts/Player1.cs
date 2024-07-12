@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Http.Headers;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using static Unity.VisualScripting.Member;
 
 public class Player : MonoBehaviour
 {
@@ -135,20 +129,18 @@ public class Player : MonoBehaviour
             int id = int.Parse(tag.Substring(tag.Length - 1, 1));
             if (id != playerid)
             {
+                audioSource.PlayOneShot(audioclip[4]);
                 if (!isShielding)
                 {
-                    isshocking = true;
+                    if (!(lastDir == Vector2.zero))
+                    {
+                        _Rigid.AddForce(-lastDir * force, ForceMode2D.Force);
+                    }
+                    else
+                    {
+                        _Rigid.AddForce(collision.gameObject.GetComponent<Player>().lastDir * force, ForceMode2D.Force);
+                    }
                 }
-                if (!(lastDir == Vector2.zero))
-                {
-                    _Rigid.AddForce(-lastDir * force, ForceMode2D.Force);
-                    audioSource.PlayOneShot(audioclip[4]);
-                }
-                else
-                {
-                    _Rigid.AddForce(collision.gameObject.GetComponent<Player>().lastDir * force, ForceMode2D.Force);
-                }
-                
             }
         }
     }

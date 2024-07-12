@@ -8,13 +8,12 @@ public class Shock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        father = gameObject.transform.parent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        father = gameObject.transform.parent;
-        gameObject.transform.position = father.position;
+        gameObject.transform.position = father.position + new Vector3(0,0.2f,0);
     }
 }

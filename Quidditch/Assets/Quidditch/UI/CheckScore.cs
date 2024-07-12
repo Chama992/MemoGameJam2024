@@ -46,14 +46,14 @@ public class CheckScore : MonoBehaviour
         player2GoldenBallScore = player2Component.goldenthievesscore;
         player1totalscore = player1Component.score;
         player2totalscore = player2Component.score;
-        countTime.text = $"计时：{gamingTimeNow}s";
+        countTime.text = $"计时：{(int)gamingTimeNow}s";
         countScore.text = $"得分：{player1totalscore}:{player2totalscore}";
         if (TextLivingTime > 1.5)
         {
             player1Text.text = $"您抽取到的扫帚是：{play1.GetComponent<buff1>().broomName}";
             player2Text.text = $"您抽取到的扫帚是：{play2.GetComponent<b2>().broomName}";
         }
-        else if ( TextLivingTime >3)
+        if ( TextLivingTime >4)
         {
             Destroy(player1Text);
             Destroy(player2Text);
