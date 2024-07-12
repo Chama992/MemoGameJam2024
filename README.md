@@ -6,7 +6,7 @@
 与小伙伴们暑期参加启明memogamejam 3天做的双人足球对战类小游戏
 # 游戏存在问题
 目前界面ui还有点适配问题
-# 文件结束
+# 文件介绍
 Quidditch为Unity文件  
 QuidditchArt为美术素材  
 QuidditchPlan为策划方案  
